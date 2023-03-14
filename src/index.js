@@ -38,7 +38,7 @@ function checksExistsTodo(request, response, next) {
 }
 
 app.post("/users", (request, response) => {
-  const { name, username } = request.body;
+  const { name, username, admin } = request.body;
 
   const userAlreadyExists = users.some((user) => user.username === username);
 
@@ -50,12 +50,17 @@ app.post("/users", (request, response) => {
     id: uuidV4(),
     name,
     username,
+    admin,
     todos: [],
   };
 
   users.push(userCreated);
 
   return response.status(201).json(userCreated);
+});
+
+app.get("/users", (_, response) => {
+  return response.status(201).json(users);
 });
 
 app.get("/todos", checksExistsUserAccount, (request, response) => {
