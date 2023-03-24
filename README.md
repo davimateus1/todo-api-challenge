@@ -61,6 +61,13 @@ BACKEND:
 	"name": "Davi",
 	"username": "davi123"
   }
+  
+* Listar os usuários - GET /users
+  {
+	"name": "Davi",
+	"username": "davi123",
+        "admin:" true
+  }
 
 * Mostrar todas as todos - GET /todos
 
